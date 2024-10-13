@@ -1,5 +1,7 @@
 import { Controller, Get, Param, Post, Body, Put, Delete } from '@nestjs/common';
 import { PostService } from './post.service';
+import { CreatePostDto } from '../post/post.dto';
+import { UpdatePostDto } from '../post/post.dto';
 
 @Controller('posts')
 export class PostController {
@@ -11,25 +13,25 @@ export class PostController {
     return this.postService.getAllPosts();
   }
 
-  // Get a single post by its ID
+  // Get post by ID
   @Get(':id')
   async getPostById(@Param('id') id: string) {
     return this.postService.getPostById(Number(id));
   }
 
-  // Create a new post
+  // Create new post
   @Post()
-  async createPost(@Body() body: { title: string; content: string }) {
-    return this.postService.createPost(body);
+  async createPost(@Body() createPostDto: CreatePostDto) {
+    return this.postService.createPost(createPostDto);
   }
 
-  // Update an existing post by its ID
+  // Update post by ID
   @Put(':id')
-  async updatePost(@Param('id') id: string, @Body() body: { title: string; content: string }) {
-    return this.postService.updatePost(Number(id), body);
+  async updatePost(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
+    return this.postService.updatePost(Number(id), updatePostDto);
   }
 
-  // Delete a post by its ID
+  // Delete post by ID
   @Delete(':id')
   async deletePost(@Param('id') id: string) {
     return this.postService.deletePost(Number(id));
