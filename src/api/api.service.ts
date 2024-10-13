@@ -13,7 +13,6 @@ export class ApiService {
 
   async getPostsFromApi(apiUrl: string) {
     const response = await firstValueFrom(this.httpService.get(apiUrl));
-    // console.log(response.data); s
     return response.data;
   }
   
