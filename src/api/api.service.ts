@@ -6,11 +6,6 @@ import { firstValueFrom } from 'rxjs';
 export class ApiService {
   constructor(private readonly httpService: HttpService) {}
 
-  async postDataToApi(apiUrl: string, data: any) {
-    const response = await firstValueFrom(this.httpService.post(apiUrl, data));
-    return response.data;
-  }
-
   async getPostsFromApi(apiUrl: string) {
     const response = await firstValueFrom(this.httpService.get(apiUrl));
     return response.data;

@@ -11,9 +11,9 @@ export class PostService {
   async getAllPosts() {
     try {
       const posts = await this.prisma.post.findMany();
-      return { code: 0, guid: '0', data: posts };
+      return { code: 0, guid: 0, data: posts };
     } catch (error) {
-      return { code: 1, guid: '1', message: `Failed to retrieve posts: ${error.message}` };
+      return { code: 1, guid: 1, message: `Failed to retrieve posts: ${error.message}` };
     }
   }
 
